@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Usb</string>
+    <string name="button1">GET CONTACTS</string>
+    <string name="take_screenshot">SAVE IMAGE</string>
+    <string name="toblack"> </string>
+    <string name="tored"> </string>
+    <string name="towhite"> </string>
+    <string name="toyellow"> </string>
+    <string name="togreen"> </string>
+    <string name="toblue"> </string>
+    <string name="who_is_this">Who is This?</string>
+    <string name="who_is_this2">Who is this?</string>
+    <string name="name_of_the_person">Name of the person</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="load_image">Load Image</string>
+
+    <string name="facebook_app_id">367092827452808</string>
+    <string name="fb_login_protocol_scheme">fb367092827452808</string>
+    <string name="posts_feed">Posts</string>
+    <string name="logout">Logout</string>
+    <string name="enter_text">Compose a post</string>
+    <string name="profile">Profile</string>
+    <string name="permissions">Permissions</string>
+    <string name="email_permission">Email Permission</string>
+    <string name="user_posts_permission">User Posts Permission</string>
+    <string name="make_post_permission">Make Post Permission</string>
+    <string name="app_permission">Entire App Permission</string>
+    <string name="no_fb_review">Permissions Granted without FB Review</string>
+    <string name="fb_review">Permissions Requiring FB Review</string>
+    <string name="no_email_perm">Email permission not granted</string>
+    <string name="textview">TextView</string>
+    <string name="share_link">Share Link</string>
+    <string name="share_photo">Share Photo</string>
+    <string name="share_video">Share Video</string>
+
+</resources>
