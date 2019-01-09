@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Usb</string>
+    <string name="app_name">Zuckerberg is not from KAIST</string>
     <string name="button1">GET CONTACTS</string>
     <string name="take_screenshot">SAVE IMAGE</string>
     <string name="toblack"> </string>
@@ -31,7 +31,15 @@
     <string name="no_email_perm">Email permission not granted</string>
     <string name="textview">TextView</string>
     <string name="share_link">Share Link</string>
-    <string name="share_photo">Share Photo</string>
+    <string name="share_photo">MAKE UGLY</string>
     <string name="share_video">Share Video</string>
+    <string name="selfish_facebook_n_we_only_support_you_with_low_pixel_images">\n Selfish Facebook: \n We only support you with low-pixel images</string>
+    <string name="todo">TODO</string>
 
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_network_gallery">NetworkGalleryActivity</string>
+    <string name="title_activity_sd_card_gallery">SdCardGalleryActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="btn_third">Face It!</string>
 </resources>

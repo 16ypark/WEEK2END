@@ -7,7 +7,7 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.com.example.screw.R;
+import com.example.usb.R;
 import com.example.usb.callbacks.PermissionCallback;
 import com.example.usb.requests.PermissionRequest;
 import com.facebook.AccessToken;

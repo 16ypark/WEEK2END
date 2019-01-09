@@ -6,11 +6,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.com.example.screw.R;
+import com.example.usb.R;
 import com.example.usb.adapters.PostAdapter;
 import com.example.usb.callbacks.GetPostsCallback;
 import com.example.usb.callbacks.PublishPostCallback;
@@ -22,9 +21,12 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.facebook.share.Sharer;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
+import com.facebook.share.internal.ShareFeedContent;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class PostFeedActivity extends Activity implements
@@ -34,14 +36,12 @@ public class PostFeedActivity extends Activity implements
         FacebookCallback<LoginResult> {
 
     private static final int PICK_IMAGE = 1;
-    private static final String PUBLISH_ACTIONS = "publish_actions";
-    private static final String SELECT_PICTURE = "Select Picture";
-    private static final String TYPE_IMAGE = "image/*";
 
     private ListView mPostsListView;
-    private TextView mComposeText;
+    private Button mComposeText;
     private Uri mAttachmentUri;
-    private CallbackManager mCallbackManager;
+    CallbackManager mCallbackManager;
+    ShareDialog shareDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,35 +50,38 @@ public class PostFeedActivity extends Activity implements
         mCallbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(mCallbackManager, this);
 
-        PostAdapter postApapter = new PostAdapter(this, new ArrayList<Post>());
+        PostAdapter postAdapter= new PostAdapter(this, new ArrayList<Post>());
         mPostsListView = findViewById(R.id.post_list_view);
-        mPostsListView.setAdapter(postApapter);
-
-        // Attach image
-        ImageButton attachImgBtn = findViewById(R.id.btn_attach);
-        attachImgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType(TYPE_IMAGE);
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, SELECT_PICTURE), PICK_IMAGE);
-            }
-        });
+        mPostsListView.setAdapter(postAdapter);
 
         // Compose post
+        shareDialog = new ShareDialog(this);
         mComposeText = findViewById(R.id.compose_text);
-        Button composePostBtn = findViewById(R.id.btn_send);
-        composePostBtn.setOnClickListener(new View.OnClickListener() {
+        mComposeText.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if (AccessToken.getCurrentAccessToken().getPermissions().contains
-                        (PUBLISH_ACTIONS)) {
-                    makePost();
-                } else {
-                    // Get Publish Permissions
-                    LoginManager.getInstance().logInWithPublishPermissions(
-                            PostFeedActivity.this, Arrays.asList(PUBLISH_ACTIONS));
+            public void onClick(View view) {
+                shareDialog.registerCallback(mCallbackManager, new FacebookCallback<Sharer.Result>() {
+                    @Override
+                    public void onSuccess(Sharer.Result result) {
+                        Toast.makeText(PostFeedActivity.this, "Share successful!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Toast.makeText(PostFeedActivity.this, "Share cancelled!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(FacebookException error) {
+                        Toast.makeText(PostFeedActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                        .setQuote("Facebook은 권한 줄때 너무 깐깐하게 검사한다")
+                        .setContentUrl(Uri.parse("http://socrip3.kaist.ac.kr:5280/form"))
+                        .build();
+                if (ShareDialog.canShow(ShareLinkContent.class)) {
+                    shareDialog.show(linkContent);
                 }
             }
         });

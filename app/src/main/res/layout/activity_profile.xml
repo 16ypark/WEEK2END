@@ -10,38 +10,51 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.screw.ProfileActivity">
+    tools:context="com.example.usb.ProfileActivity">
 
-    <com.facebook.drawee.view.SimpleDraweeView
+    <ImageView
         android:id="@+id/profile_photo"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_margin="@dimen/margin_small"
         android:adjustViewBounds="false"
-        android:baselineAlignBottom="false"
-        fresco:placeholderiImage="@drawable/com_facebook_profile_picture_blank_square" />
+        android:baselineAlignBottom="false" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="18sp"
         tools:text="Name" />
 
     <TextView
         android:id="@+id/id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="18sp"
         tools:text="ID" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="18sp"
         tools:text="Email" />
 
     <TextView
         android:id="@+id/permissions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="18sp"
         tools:text="Permissions" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="183dp"
+        android:fontFamily="@font/caveat_brush"
+        android:text="@string/selfish_facebook_n_we_only_support_you_with_low_pixel_images"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 </LinearLayout>

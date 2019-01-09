@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.com.example.screw.R;
+import com.example.usb.R;
 import com.example.usb.Util;
 import com.example.usb.entities.Post;
 import com.facebook.drawee.view.SimpleDraweeView;

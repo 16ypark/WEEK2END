@@ -3,17 +3,17 @@ package com.example.usb;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.com.example.screw.R;
+import com.bumptech.glide.Glide;
 import com.example.usb.callbacks.GetUserCallback;
 import com.example.usb.entities.User;
 import com.example.usb.requests.UserRequest;
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.view.SimpleDraweeView;
 
 public class ProfileActivity extends Activity implements GetUserCallback.IGetUserResponse {
-    private SimpleDraweeView mProfilePhotoView;
+    private ImageView mProfilePhotoView;
     private TextView mName;
     private TextView mId;
     private TextView mEmail;
@@ -40,7 +40,8 @@ public class ProfileActivity extends Activity implements GetUserCallback.IGetUse
 
     @Override
     public void onCompleted(User user) {
-        mProfilePhotoView.setImageURI(user.getPicture());
+        Glide.with(this).load(user.getPicture()).into(mProfilePhotoView);
+        //mProfilePhotoView.setImageURI(user.getPicture());
         mName.setText(user.getName());
         mId.setText(user.getId());
         if (user.getEmail() == null) {
@@ -49,6 +50,7 @@ public class ProfileActivity extends Activity implements GetUserCallback.IGetUse
         } else {
             mEmail.setText(user.getEmail());
             mEmail.setTextColor(Color.BLACK);
+//            user.getEmail() --> DB랑 보냄
         }
         mPermissions.setText(user.getPermissions());
     }
